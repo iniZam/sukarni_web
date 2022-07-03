@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block konten %}
+
+{% for data in info %}
+
+<div class="card" style="width: 40em;">
+   <div class="card-body">
+     <h5 class="card-title">{{data.subjek}} </h5>
+     <h6 class="card-subtitle mb-2 text-muted">di post pada {{data.tgl_post}} </h6>
+     <p class="card-text"> {{data.caption}} </p>
+     <a href="#" class="card-link">Like</a>
+     <a href="#" class="card-link">Komen</a>
+
+
+   </div>
+ </div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block konten %}
+<h1>Posting...!!!</h1>
+
+<form method="POST">
+   <div class="container"><!--ini container ini berguna agar isi webnya di tengan -->
+      <div class="jumbotron"><!--jumbroton ini akan di edit fi file style.css yang ada di dalam forder static dan di dalam folder css-->
+         
+         {{form.hidden_tag()}}
+         <div class="form-group">
+            {{form.subjek.label(class="form-control-label")}}
+            {% if form.subjek.errors %}
+         {{form.subjek(class="form-control is-invalid")}}
+         <div class="invalid-feedback">
+            {% for error in form.subjek.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+         </div>
+      
+         {% else %}
+         {{form.subjek(class="form-control")}}
+         {% endif %}</div>
+      
+         <!-- caption -->
+         {{form.hidden_tag()}}
+         <div class="form-group">
+            {{form.caption.label(class="form-control-label")}}
+            {% if form.caption.errors %}
+         {{form.caption(class="form-control is-invalid")}}
+         <div class="invalid-feedback">
+            {% for error in form.caption.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+         </div>
+      
+         {% else %}
+         {{form.caption(class="form-control")}}
+         {% endif %}</div>
+
+         
+      
+      
+
+   <div class="form-group">
+      
+      {{form.submit(class="btn btn-primary")}}<!--ini juga sama kyak di atas-->
+   </div>
+  
+   
+
+   </div>
+</div>
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Halo semua</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename="css/bootstrap.min.css")}}"><!--ini adalah cara untuk memanggil bootstrap-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename="css/style.css")}}"><!--ini adalah cara untuk memanggil bootstrap-->
+
+    
+    
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container">
+
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('rmahasiswa.rumah')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for("rmahasiswa.informasi")}}">Informasi</a>
+              </li>
+
+              {% if current_user.is_authenticated %}    
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for("rmahasiswa.agenda_inf")}}">Posting</a>
+              </li>      
+              {% else %}
+              <!-- ini akan ditampilkan saaat tidak login -->
+              <li class="nav-item">
+                  <a class="nav-link" href="{{url_for("rmahasiswa.login")}}">Login</a></li>
+              {%endif%}
+              
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      
+      
+      <div class="container mt-4">
+
+        <div class="row"><!--ini adalah layout jadi nanti halaman webnya diatur seperti tabel dan ini untuk membuat sebuah baris-->
+          <div class="col-md-8"><!--jika di atas itu baris maka yang ini adalah kolomnya dan kolom itu batasnya 12-->
+            <div class="shadow p-3 mb-5 bg- rounded">
+              <!-- flash -->
+              {% with messages= get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+              {% for category, message in messages %}
+
+              <div class="alert alert-{{category}}">
+                  {{message}}
+              </div>
+              {% endfor %}
+              {% endif %}
+              {% endwith %}
+
+            </div>  
+            {% block konten %}
+              
+            {% endblock %}
+        </div>
+        
+        <div class="col-md-4"><!--karena di atas sudah terpakai 8 maka sisanya 4 dipakai di sini-->
+        <div class="shadow p-3 mb-5 bg- rounded">
+          {% if current_user.is_authenticated %}
+          <div class="card" style="width: 19rem;">
+            <img src="{{url_for('static', filename= 'foto/'+current_user.foto )}} " class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{current_user.nama}}</h5>
+              <p class="card-text">{{current_user.email}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><a href="{{url_for('rmahasiswa.akun')}}">dashboard</a> </li>
+              <li class="list-group-item">Ed</li>
+              <li class="list-group-item">
+                <a href="{{url_for('rmahasiswa.laporan')}}">lapor</a>
+              </li>
+            </ul>
+            <div class="card-body">
+              <a href="{{url_for('rmahasiswa.edit')}}" class="card-link">Update Profil</a>
+              <a href="{{url_for('rmahasiswa.keluar')}}" class="card-link">Keluar</a>
+            </div>
+          </div>
+          
+          {% else %}
+          
+          <h1>Menu Lain</h1>         
+          <li>data mahasiswa</li>
+          <li>data dosen</li>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+        
+      
+    
+    
+  </body>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="{{url_for ('static',filename="js/bootstrap.min.js")}}" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  
+  
+  <!-- <script src="../static/js/bootstrap.min.js"></script> -->
+
+</html>

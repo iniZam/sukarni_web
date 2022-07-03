@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block konten %}
+<h1>Formulir Pendaftaran </h1>
+
+<form method="POST">
+   <div class="container"><!--ini container ini berguna agar isi webnya di tengan -->
+      <div class="jumbotron"><!--jumbroton ini akan di edit fi file style.css yang ada di dalam forder static dan di dalam folder css-->
+         
+         {{form.hidden_tag()}}
+         <div class="form-group">
+            {{form.npm.label(class="form-control-label")}}<!--tanda kurung ini berguna untuk menggunakan clas yang ada di css/bootstrap-->
+            {% if form.npm.errors %}<!--ini percabangan jika menemukan eror-->
+         {{form.npm(class="form-control is-invalid")}}
+         <div class="invalid-feedback">
+            {% for error in form.npm.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+         </div>
+      
+         {% else %}<!--ini else-->
+         {{form.npm(class="form-control")}}<!--ini juga sama kyak di atas-->
+         
+      {% endif %}</div>
+      
+   <div class="form-group">
+      {{form.nama.label(class="form-control-label")}}<!--tanda kurung ini berguna untuk menggunakan clas yang ada di css/bootstrap-->
+      {{form.nama(class="form-control")}}<!--ini juga sama kyak di atas-->
+   </div>
+ 
+   <div class="form-group">
+      {{form.email.label(class="form-control-label")}}<!--tanda kurung ini berguna untuk menggunakan clas yang ada di css/bootstrap-->
+      {{form.email(class="form-control")}}<!--ini juga sama kyak di atas-->
+   </div>
+
+   
+   
+   
+   <div class="form-group">
+      {{form.kelas.label(class="form-control-label")}}<!--tanda kurung ini berguna untuk menggunakan clas yang ada di css/bootstrap-->
+      {{form.kelas(class="form-control")}}<!--ini juga sama kyak di atas-->
+   </div>
+ 
+  <div class="form-group">
+      {{form.alamat.label(class="form-control-label")}}<!--tanda kurung ini berguna untuk menggunakan clas yang ada di css/bootstrap-->
+      {{form.alamat(class="form-control")}}<!--ini juga sama kyak di atas-->
+   </div>
+ 
+
+   
+      {{form.hidden_tag()}}
+      <div class="form-group">
+         {{form.password.label(class="form-control-label")}}<!--tanda kurung ini berguna untuk menggunakan clas yang ada di css/bootstrap-->
+         {% if form.password.errors %}<!--ini percabangan jika menemukan eror-->
+         {{form.password(class="form-control is-invalid")}}
+         <div class="invalid-feedback">
+         {% for error in form.password.errors %}
+         <span>{{error}}</span>
+         {% endfor %}
+         </div>
+
+         {% else %}<!--ini else-->
+         {{form.password(class="form-control")}}<!--ini juga sama kyak di atas-->
+
+         {% endif %}</div>
+      
+
+      {{form.hidden_tag()}}
+      <div class="form-group">
+         {{form.konfir_pass.label(class="form-control-label")}}<!--tanda kurung ini berguna untuk menggunakan clas yang ada di css/bootstrap-->
+         {% if form.konfir_pass.errors %}<!--ini percabangan jika menemukan eror-->
+         {{form.konfir_pass(class="form-control is-invalid")}}
+         <div class="invalid-feedback">
+         {% for error in form.konfir_pass.errors %}
+         <span>{{error}}</span>
+         {% endfor %}
+         </div>
+
+         {% else %}<!--ini else-->
+         {{form.konfir_pass(class="form-control")}}<!--ini juga sama kyak di atas-->
+
+         {% endif %}</div>
+      
+      
+
+   <div class="form-group">
+      
+      {{form.submit(class="btn btn-primary")}}<!--ini juga sama kyak di atas-->
+   </div>
+  
+   
+
+   </div>
+</div>
+
+</form>
+
+
+{% endblock %}

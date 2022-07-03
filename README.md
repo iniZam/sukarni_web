@@ -1,2 +1,2 @@
-# sukarni_web
-ini tugas web saya
+# nas_web
+ini adalah website saya

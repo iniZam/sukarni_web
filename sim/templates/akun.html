@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block konten %}
+
+<div class="container"><!--ini container ini berguna agar isi webnya di tengan -->
+    <div class="jumbotron"><!--jumbroton ini akan di edit fi file style.css yang ada di dalam forder static dan di dalam folder css-->
+      <h1 class="display-4">Hello,{{current_user.nama}} </h1>  
+      
+        <h1 class="display-4">selamat datang !</h1>
+        <p class="lead">aku tak tau apa tujuanmu mengunjungi website ini tapi semoga kau betah </p>
+        <hr class="my-4">
+        <p>Jika ingin melapor sesuatu klik link di bawah</p>
+        <a class="btn btn-primary btn-lg" href="{{url_for('rmahasiswa.laporan')}}" role="button">Lapor</a>
+      </div>
+    
+</div>
+
+{% endblock %}

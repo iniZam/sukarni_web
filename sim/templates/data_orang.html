@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block konten %}
+  <form>
+    <div class="form-group">
+        {{form.npm.label(class="form-control-label")}}<!--tanda kurung ini berguna untuk menggunakan clas yang ada di css/bootstrap-->
+        {{form.npm(class="form-control")}}<!--ini juga sama kyak di atas-->
+     </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+
+<h1>Ini adalah Data orang!!!!!!!!!!!!</h1>
+	<h2>Data Manusia :</h2>
+    {% for data in anjay %} <!-- ini adalah statement untuk awal looping  -->
+    <ul>
+        <li><label for="">Nama:</label> {{data.nama}}</li>
+        <li><label for="">Gender</label> {{data.gender}}</li>
+        <li><label for="">Spesies</label> {{data.spesies}}</li><br>
+    </ul>
+    {% endfor %} <!-- ini adalah akhir looping (kalo di java anggap saja ini tutup kurung kuawalnya ) -->
+{% endblock %}
+
